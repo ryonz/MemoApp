@@ -3,45 +3,30 @@ import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 class MemoList extends React.Component {
   render() {
+    console.log(this.props.memoList);
     return (
       <View style={styles.memoList}>
 
-        <TouchableHighlight  onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail');}}>
           <View style={styles.memoListItem}>
-              <Text style={styles.memoTitle}>講座のアイテム</Text>
-              <Text style={styles.memoDate}>2017/08/29</Text>
+            <Text style={styles.memoTitle}>講座のアイテム</Text>
+            <Text style={styles.memoDate}>2017/08/29</Text>
           </View>
         </TouchableHighlight>
 
-        <TouchableHighlight  onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail');}}>
           <View style={styles.memoListItem}>
-              <Text style={styles.memoTitle}>講座のアイテム</Text>
-              <Text style={styles.memoDate}>2017/08/29</Text>
+            <Text style={styles.memoTitle}>講座のアイテム</Text>
+            <Text style={styles.memoDate}>2017/08/29</Text>
           </View>
         </TouchableHighlight>
 
-        <TouchableHighlight  onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail');}}>
           <View style={styles.memoListItem}>
-              <Text style={styles.memoTitle}>講座のアイテム</Text>
-              <Text style={styles.memoDate}>2017/08/29</Text>
+            <Text style={styles.memoTitle}>講座のアイテム</Text>
+            <Text style={styles.memoDate}>2017/08/29</Text>
           </View>
         </TouchableHighlight>
-
-        <TouchableHighlight  onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
-          <View style={styles.memoListItem}>
-              <Text style={styles.memoTitle}>講座のアイテム</Text>
-              <Text style={styles.memoDate}>2017/08/29</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight  onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
-          <View style={styles.memoListItem}>
-              <Text style={styles.memoTitle}>講座のアイテム</Text>
-              <Text style={styles.memoDate}>2017/08/29</Text>
-          </View>
-        </TouchableHighlight>
-
-
 
       </View>
     );
