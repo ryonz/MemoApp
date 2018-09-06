@@ -18,7 +18,7 @@ class CircleButton extends React.Component {
   }
 
   render() {
-    const { style, color, omPress } = this.props;
+    const { style, color, onPress } = this.props;
 
     let bgColor = '#E31676';
     let textColor = '#fff';
@@ -29,7 +29,7 @@ class CircleButton extends React.Component {
     }
 
     return (
-      <TouchableHighlight style={[styles.container,style]} onPress={this.props.onPress} underlayColor="transparent">
+      <TouchableHighlight style={[styles.container.style]} onPress={this.props.onPress} underlayColor="transparent">
         <View style={[styles.circleButton, { backgroundColor: bgColor }]}>
           {
             this.state.fontLoaded ? (
