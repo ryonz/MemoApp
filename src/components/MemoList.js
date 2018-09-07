@@ -25,6 +25,7 @@ class MemoList extends React.Component {
     return (
       <View style={styles.memoList}>
         <FlatList
+          style={styles.faltlist}
           data={this.props.memoList}
           renderItem={this.renderMemo.bind(this)}
         />
@@ -46,7 +47,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ddd',
     backgroundColor: '#fff'
   },
-
+  faltlist: {
+    flex: 1,
+    width: '100%',
+  },
   memoTitle: {
     fontSize: 18,
     marginBottom: 4,

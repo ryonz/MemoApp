@@ -1,24 +1,31 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends React.Component {
   state = {
-    email: 'user1@example.com',
-    password: 'password',
+    email: '',
+    password: '',
   }
 
-//eslint-disable-next-line
-  handleSubmit(){
+  handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((user)=>{
+      .then(() => {
         console.log('success',user);
-        this.props.navigation.navigate('Home');
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: 'Home' })],
+        });
+        this.props.navigation.dispatch(resetAction);
       })
-      .catch((error) => {
-        console.log('error', error)
+      .catch(() => {
       });
- }
+  }
+
+  handlePress() {
+    this.props.navigation.navigate('Signup');
+  }
 
   render() {
     return (
@@ -50,6 +57,11 @@ class LoginScreen extends React.Component {
           underlayColor="#ddd">
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>
+
+        <TouchableOpacity style={styles.signup} onPress={this.handlePress.bind(this)}>
+          <Text style={styles.signupText}>メンバー登録</Text>
+        </TouchableOpacity>
+
       </View>
 
     );
@@ -57,39 +69,45 @@ class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container:{
-      flex: 1,
-      width: '100%',
-      padding: 24,
-      backgroundColor: '#fff',
-    },
-    input:{
-      backgroundColor: '#eee',
-      height: 48,
-      marginBottom: 16,
-      borderWidth: 1,
-      borderColor: '#DDD',
-      padding: 8,
-    },
-    title:{
-      fontSize: 28,
-      alignSelf:'center',
-      marginBottom: 24,
-    },
-    button:{
-      backgroundColor: '#E31676',
-      height: 48,
-      borderRadius: 4,
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '70%',
-      alignSelf: 'center',
-    },
-    buttonTitle:{
-      color: '#fff',
-      fontSize: 18,
-    },
-
+  container:{
+    flex: 1,
+    width: '100%',
+    padding: 24,
+    backgroundColor: '#fff',
+  },
+  input:{
+    backgroundColor: '#eee',
+    height: 48,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    padding: 8,
+  },
+  title:{
+    fontSize: 28,
+    alignSelf:'center',
+    marginBottom: 24,
+  },
+  button:{
+    backgroundColor: '#E31676',
+    height: 48,
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '70%',
+    alignSelf: 'center',
+  },
+  buttonTitle:{
+    color: '#fff',
+    fontSize: 18,
+  },
+  signup: {
+    marginTop: 16,
+    alignSelf: 'center',
+  },
+  signupText: {
+    fontSize: 16,
+  },
 });
 
 export default LoginScreen;
